@@ -1,0 +1,386 @@
+<!-- HTML file created by William Cline -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Secret Message Revealer</title>
+    <!-- Adding a simple style for a better user experience -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            padding: 20px;
+        }
+        .warning {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- Input for the user's first name -->
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" placeholder="Enter your first name">
+
+    <!-- Input for the user's last name -->
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" placeholder="Enter your last name">
+
+    <!-- Input for the user's ZIP code -->
+    <label for="zipCode">ZIP Code:</label>
+    <input type="text" id="zipCode" placeholder="Enter your ZIP code">
+
+    <!-- Button to trigger validation and reveal the secret message -->
+    <button onclick="validateAndReveal()">Reveal Secret Message</button>
+
+    <!-- Placeholder for warnings -->
+    <div id="warning" class="warning"></div>
+
+    <!-- Placeholder for the secret message -->
+    <div id="secretMessage"></div>
+
+    <!-- Adding JavaScript for form validation and interaction -->
+    <script>
+        // Function to combine first name and last name
+        function getFullName(firstName, lastName) {
+            return firstName + ' ' + lastName;
+        }
+
+        // Function to check if the full name is more than 20 characters
+        function isNameValid(fullName) {
+            return fullName.length <= 20;
+        }
+
+        // Function to check if the ZIP code is a 5-digit number
+        function isZipCodeValid(zipCode) {
+            return /^\d{5}$/.test(zipCode);
+        }
+
+        // Main function to validate inputs and reveal the secret message
+        function validateAndReveal() {
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var zipCode = document.getElementById('zipCode').value;
+            var fullName = getFullName(firstName, lastName);
+
+            // Clear any previous warnings
+            document.getElementById('warning').textContent = '';
+
+            // Check if the full name is valid
+            if (!isNameValid(fullName)) {
+                document.getElementById('warning').textContent = 'Warning: Your full name must be 20 characters or less.';
+                return;
+            }
+
+            // Check if the ZIP code is valid
+            if (!isZipCodeValid(zipCode)) {
+                document.getElementById('warning').textContent = 'Warning: Your ZIP code must be a 5-digit number.';
+                return;
+            }
+
+            // If all inputs are valid, show the secret message
+            document.getElementById('secretMessage').textContent = 'Congratulations! The secret message is: "Keep learning and coding!"';
+        }
+    </script>
+</body>
+</html>
+
+<!-- HTML file created by William Cline -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Secret Message Revealer</title>
+    <!-- Adding a simple style for a better user experience -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            padding: 20px;
+        }
+        .warning {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- Input for the user's first name -->
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" placeholder="Enter your first name">
+
+    <!-- Input for the user's last name -->
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" placeholder="Enter your last name">
+
+    <!-- Input for the user's ZIP code -->
+    <label for="zipCode">ZIP Code:</label>
+    <input type="text" id="zipCode" placeholder="Enter your ZIP code">
+
+    <!-- Button to trigger validation and reveal the secret message -->
+    <button onclick="validateAndReveal()">Reveal Secret Message</button>
+
+    <!-- Placeholder for warnings -->
+    <div id="warning" class="warning"></div>
+
+    <!-- Placeholder for the secret message -->
+    <div id="secretMessage"></div>
+
+    <!-- Adding JavaScript for form validation and interaction -->
+    <script>
+        // Function to combine first name and last name
+        function getFullName(firstName, lastName) {
+            return firstName + ' ' + lastName;
+        }
+
+        // Function to check if the full name is more than 20 characters
+        function isNameValid(fullName) {
+            return fullName.length <= 20;
+        }
+
+        // Function to check if the ZIP code is a 5-digit number
+        function isZipCodeValid(zipCode) {
+            return /^\d{5}$/.test(zipCode);
+        }
+
+        // Main function to validate inputs and reveal the secret message
+        function validateAndReveal() {
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var zipCode = document.getElementById('zipCode').value;
+            var fullName = getFullName(firstName, lastName);
+
+            // Clear any previous warnings
+            document.getElementById('warning').textContent = '';
+
+            // Check if the full name is valid
+            if (!isNameValid(fullName)) {
+                document.getElementById('warning').textContent = 'Warning: Your full name must be 20 characters or less.';
+                return;
+            }
+
+            // Check if the ZIP code is valid
+            if (!isZipCodeValid(zipCode)) {
+                document.getElementById('warning').textContent = 'Warning: Your ZIP code must be a 5-digit number.';
+                return;
+            }
+
+            // If all inputs are valid, show the secret message
+            document.getElementById('secretMessage').textContent = 'Congratulations! The secret message is: "Keep learning and coding!"';
+        }
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <!-- Adding some basic styling -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #008cba;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #005f73;
+        }
+    </style>
+</head>
+<body>
+    <!-- Container for our palindrome checker -->
+    <div class="container">
+        <h1>Palindrome Checker</h1>
+        <!-- Button to trigger the palindrome check -->
+        <button class="btn" id="checkPalindrome">Check for Palindrome</button>
+    </div>
+
+    <!-- Adding JavaScript for functionality -->
+    <script>
+        // Function to check if a string is a palindrome
+        function isPalindrome(str) {
+            // Remove spaces and convert to lowercase
+            const cleaned = str.replace(/\s+/g, '').toLowerCase();
+            // Check if string is the same forwards and backwards
+            return cleaned === cleaned.split('').reverse().join('');
+        }
+
+        // Function to prompt the user and check the input
+        function check() {
+            let userInput;
+            do {
+                // Prompt the user for a string
+                userInput = prompt('Enter a string to check if it is a palindrome:');
+                if (userInput !== null) {
+                    // Notify the user if the string is a palindrome or not
+                    alert(isPalindrome(userInput) ? 'It is a palindrome!' : 'It is not a palindrome.');
+                }
+            } while (userInput !== null); // Continue until the user cancels the prompt
+        }
+
+        // Add event listener to our button
+        document.getElementById('checkPalindrome').addEventListener('click', check);
+    </script>
+</body>
+</html>
+
+
+<!-- strings.html - Created by William Cline -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information and Secret Message</title>
+    <!-- Adding some basic styling -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        input, .btn {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .btn {
+            background-color: #008cba;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #005f73;
+        }
+        .warning {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Container for user inputs -->
+    <div class="container">
+        <h1>User Information</h1>
+        <!-- Input for the user's first name -->
+        <input type="text" id="firstName" placeholder="Enter your first name">
+        <!-- Input for the user's last name -->
+        <input type="text" id="lastName" placeholder="Enter your last name">
+        <!-- Input for the user's ZIP code -->
+        <input type="text" id="zipCode" placeholder="Enter your ZIP code">
+        <!-- Button to trigger the validation and reveal the secret message -->
+        <button class="btn" id="revealMessage">Reveal Secret Message</button>
+        <!-- Placeholder for warnings -->
+        <div id="warning" class="warning"></div>
+    </div>
+
+    <!-- Container for the palindrome checker -->
+    <div class="container">
+        <h1>Palindrome Checker</h1>
+        <!-- Button to trigger the palindrome check -->
+        <button class="btn" id="checkPalindrome">Check for Palindrome</button>
+    </div>
+
+    <!-- Placeholder for the secret message -->
+    <div id="secretMessage"></div>
+
+    <!-- Adding JavaScript for functionality -->
+    <script>
+        // Function to combine first name and last name
+        function getFullName(firstName, lastName) {
+            return firstName + ' ' + lastName;
+        }
+
+        // Function to check if the full name is more than 20 characters
+        function isNameValid(fullName) {
+            return fullName.length <= 20;
+        }
+
+        // Function to check if the ZIP code is a 5-digit number
+        function isZipCodeValid(zipCode) {
+            return /^\d{5}$/.test(zipCode);
+        }
+
+        // Function to validate inputs and reveal the secret message
+        function validateAndReveal() {
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var zipCode = document.getElementById('zipCode').value;
+            var fullName = getFullName(firstName, lastName);
+            var warningDiv = document.getElementById('warning');
+            warningDiv.textContent = ''; // Clear any previous warnings
+
+            // Check if the full name is valid
+            if (!isNameValid(fullName)) {
+                warningDiv.textContent = 'Warning: Your full name must be 20 characters or less.';
+                return;
+            }
+
+            // Check if the ZIP code is valid
+            if (!isZipCodeValid(zipCode)) {
+                warningDiv.textContent = 'Warning: Your ZIP code must be a 5-digit number.';
+                return;
+            }
+
+            // If all inputs are valid, show the secret message
+            document.getElementById('secretMessage').textContent = 'Congratulations! The secret message is: "Keep learning and coding!"';
+        }
+
+        // Function to check if a string is a palindrome
+        function isPalindrome(str) {
+            const cleaned = str.replace(/\s+/g, '').toLowerCase();
+            return cleaned === cleaned.split('').reverse().join('');
+        }
+
+        // Function to prompt the user and check the input
+        function checkPalindrome() {
+            let userInput = prompt('Enter a string to check if it is a palindrome:');
+            if (userInput !== null) {
+                alert(isPalindrome(userInput) ? 'It is a palindrome!' : 'It is not a palindrome.');
+            }
+        }
+
+        // Event listeners
+        document.getElementById('revealMessage').addEventListener('click', validateAndReveal);
+        document.getElementById('checkPalindrome').addEventListener('click', checkPalindrome);
+    </script>
+</body>
+</html>
