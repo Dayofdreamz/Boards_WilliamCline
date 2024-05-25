@@ -1,0 +1,77 @@
+<!-- strings.html - Created by William Cline -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <!-- Adding some basic styling -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #008cba;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #005f73;
+        }
+    </style>
+</head>
+<body>
+    <!-- Container for our palindrome checker -->
+    <div class="container">
+        <h1>Palindrome Checker</h1>
+        <!-- Button to trigger the palindrome check -->
+        <button class="btn" id="checkPalindrome">Check for Palindrome</button>
+    </div>
+
+    <!-- Adding JavaScript for functionality -->
+    <script>
+        // Function to check if a string is a palindrome
+        function isPalindrome(str) {
+            // Remove spaces and convert to lowercase
+            const cleaned = str.replace(/\s+/g, '').toLowerCase();
+            // Check if string is the same forwards and backwards
+            return cleaned === cleaned.split('').reverse().join('');
+        }
+
+        // Function to prompt the user and check the input
+        function check() {
+            let userInput;
+            do {
+                // Prompt the user for a string
+                userInput = prompt('Enter a string to check if it is a palindrome:');
+                if (userInput !== null) {
+                    // Notify the user if the string is a palindrome or not
+                    alert(isPalindrome(userInput) ? 'It is a palindrome!' : 'It is not a palindrome.');
+                }
+            } while (userInput !== null); // Continue until the user cancels the prompt
+        }
+
+        // Add event listener to our button
+        document.getElementById('checkPalindrome').addEventListener('click', check);
+    </script>
+</body>
+</html>
