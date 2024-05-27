@@ -1,13 +1,46 @@
-!DOCTYPE html>
+<!-- Adding JavaScript for functionality -->
+<script>
+    // Function to check if a string is a palindrome
+    function isPalindrome(str) {
+        // Remove spaces and convert to lowercase
+        const cleaned = str.replace(/\s+/g, '').toLowerCase();
+        // Check if string is the same forwards and backwards
+        return cleaned === cleaned.split('').reverse().join('');
+    }
+
+    // Function to prompt the user and check the input
+    function check() {
+        let userInput;
+        do {
+            // Prompt the user for a string
+            userInput = prompt('Enter a string to check if it is a palindrome:');
+            if (userInput !== null) {
+                // Notify the user if the string is a palindrome or not
+                alert(isPalindrome(userInput) ? 'It is a palindrome!' : 'It is not a palindrome.');
+            }
+        } while (userInput !== null); // Continue until the user cancels the prompt
+    }
+
+    // Add event listener to our button
+    document.getElementById('checkPalindrome').addEventListener('click', check);
+</script>
+</body> </html>
+
+Just now.
+Great! Let's integrate the new requirements into your existing strings.html page. We'll add the necessary input fields for the user's first and last names, and zip code, along with the validations and a secret message display. Here's how you can modify your HTML and JavaScript:
+
+Updated HTML and JavaScript Code
+<!-- strings.html - Created by William Cline -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Information Form</title>
+    <title>User Info Validation</title>
+    <!-- Adding some basic styling -->
     <style>
-        /* Add some basic styling for a nice look and feel */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #f3f3f3;
             margin: 0;
             padding: 20px;
@@ -36,55 +69,55 @@
         .btn:hover {
             background-color: #005f73;
         }
+        input {
+            margin: 10px 0;
+            padding: 8px;
+            width: calc(100% - 22px);
+            display: block;
+        }
     </style>
 </head>
 <body>
-    <!-- Container for our user information form -->
+    <!-- Container for our input form -->
     <div class="container">
-        <h1>User Information Form</h1>
-        <form>
-            <!-- First name input -->
-            <label for="fname">First name:</label><br>
-            <input type="text" id="fname" name="fname"><br>
-
-            <!-- Last name input -->
-            <label for="lname">Last name:</label><br>
-            <input type="text" id="lname" name="lname"><br>
-
-            <!-- Zip code input -->
-            <label for="zip">ZIP Code:</label><br>
-            <input type="text" id="zip" name="zip" pattern="[0-9]{5}" title="Five-digit zip code"><br>
-
-            <!-- Submit button -->
-            <button class="btn" onclick="processForm()">Submit</button>
+        <h1>User Info Validation</h1>
+        <form id="userInfoForm">
+            <!-- Input for first name -->
+            <input type="text" id="firstName" placeholder="First Name" required>
+            <!-- Input for last name -->
+            <input type="text" id="lastName" placeholder="Last Name" required>
+            <!-- Input for zip code -->
+            <input type="text" id="zipCode" placeholder="Zip Code" required>
+            <!-- Button to submit the form -->
+            <button type="button" class="btn" onclick="validateInputs()">Submit</button>
         </form>
+        <!-- Place to display messages -->
+        <div id="message"></div>
     </div>
 
-    <!-- Adding JavaScript for form functionality -->
+    <!-- Adding JavaScript for functionality -->
     <script>
-        function processForm() {
-            // Get user inputs
-            const firstName = document.getElementById('fname').value;
-            const lastName = document.getElementById('lname').value;
-            const zipCode = document.getElementById('zip').value;
+        // Function to validate user inputs
+        function validateInputs() {
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var fullName = firstName + ' ' + lastName;
 
-            // Combine first name and last name
-            const fullName = firstName + ' ' + lastName;
-
-            // Check if the combined name has more than 20 characters
+            // Check if full name is longer than 20 characters
             if (fullName.length > 20) {
-                alert('Name is too long! Please enter a shorter name.');
-                return; // Stop processing
+                document.getElementById('message').innerText = 'Warning: Name should not exceed 20 characters!';
+                return;
             }
 
-            // Check if the zip code is valid (5 digits)
+            var zipCode = document.getElementById('zipCode').value;
+            // Check if zip code is exactly 5 digits
             if (!/^\d{5}$/.test(zipCode)) {
-                alert('Invalid ZIP Code! Please enter a valid five-digit ZIP Code.');
-                return; // Stop processing
+                document.getElementById('message').innerText = 'Warning: Invalid Zip Code!';
+                return;
             }
 
-            // If everything is valid, show a success message
-            alert('Thank you! Your information has been submitted successfully.');
+            // If all inputs are valid, show the secret message
+            document.getElementById('message').innerText = 'Congratulations! Here is your secret message: 🎉 [Your Secret Message Here] 🎉';
         }
     </script>
 </body>
