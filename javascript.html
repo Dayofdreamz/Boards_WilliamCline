@@ -1,42 +1,10 @@
-<!-- Adding JavaScript for functionality -->
-<script>
-    // Function to check if a string is a palindrome
-    function isPalindrome(str) {
-        // Remove spaces and convert to lowercase
-        const cleaned = str.replace(/\s+/g, '').toLowerCase();
-        // Check if string is the same forwards and backwards
-        return cleaned === cleaned.split('').reverse().join('');
-    }
-
-    // Function to prompt the user and check the input
-    function check() {
-        let userInput;
-        do {
-            // Prompt the user for a string
-            userInput = prompt('Enter a string to check if it is a palindrome:');
-            if (userInput !== null) {
-                // Notify the user if the string is a palindrome or not
-                alert(isPalindrome(userInput) ? 'It is a palindrome!' : 'It is not a palindrome.');
-            }
-        } while (userInput !== null); // Continue until the user cancels the prompt
-    }
-
-    // Add event listener to our button
-    document.getElementById('checkPalindrome').addEventListener('click', check);
-</script>
-</body> </html>
-
-Just now.
-Great! Let's integrate the new requirements into your existing strings.html page. We'll add the necessary input fields for the user's first and last names, and zip code, along with the validations and a secret message display. Here's how you can modify your HTML and JavaScript:
-
-Updated HTML and JavaScript Code
 <!-- strings.html - Created by William Cline -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Info Validation</title>
+    <title>User Info and Palindrome Checker</title>
     <!-- Adding some basic styling -->
     <style>
         body {
@@ -78,9 +46,9 @@ Updated HTML and JavaScript Code
     </style>
 </head>
 <body>
-    <!-- Container for our input form -->
+    <!-- Container for our input form and palindrome checker -->
     <div class="container">
-        <h1>User Info Validation</h1>
+        <h1>User Info Validation and Palindrome Checker</h1>
         <form id="userInfoForm">
             <!-- Input for first name -->
             <input type="text" id="firstName" placeholder="First Name" required>
@@ -91,6 +59,8 @@ Updated HTML and JavaScript Code
             <!-- Button to submit the form -->
             <button type="button" class="btn" onclick="validateInputs()">Submit</button>
         </form>
+        <!-- Button to trigger the palindrome check -->
+        <button class="btn" id="checkPalindrome">Check for Palindrome</button>
         <!-- Place to display messages -->
         <div id="message"></div>
     </div>
@@ -119,6 +89,22 @@ Updated HTML and JavaScript Code
             // If all inputs are valid, show the secret message
             document.getElementById('message').innerText = 'Congratulations! Here is your secret message: 🎉 [Your Secret Message Here] 🎉';
         }
+
+        // Function to check if a string is a palindrome
+        function isPalindrome(str) {
+            const cleaned = str.replace(/\s+/g, '').toLowerCase();
+            return cleaned === cleaned.split('').reverse().join('');
+        }
+
+        // Function to prompt the user and check the input
+        function check() {
+            let userInput = prompt('Enter a string to check if it is a palindrome:');
+            if (userInput !== null) {
+                alert(isPalindrome(userInput) ? 'It is a palindrome!' : 'It is not a palindrome.');
+            }
+        }
+
+        document.getElementById('checkPalindrome').addEventListener('click', check);
     </script>
 </body>
 </html>
