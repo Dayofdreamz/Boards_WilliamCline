@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,9 +8,7 @@
         /* Add some basic styling for a nice look and feel */
         body {
             font-family: Arial, sans-serif;
-            background-image: url('bg-background.jpg'); /* Specify your background image URL here */
-            background-repeat: no-repeat;
-            background-size: cover;
+            background-color: #f3f3f3;
             margin: 0;
             padding: 20px;
             display: flex;
@@ -22,7 +20,7 @@
             background-color: #fff;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         .btn {
             display: block;
@@ -65,9 +63,28 @@
     <!-- Adding JavaScript for form functionality -->
     <script>
         function processForm() {
-            // Get user inputs (same as before)
-            // ...
-            // Rest of your existing code
+            // Get user inputs
+            const firstName = document.getElementById('fname').value;
+            const lastName = document.getElementById('lname').value;
+            const zipCode = document.getElementById('zip').value;
+
+            // Combine first name and last name
+            const fullName = firstName + ' ' + lastName;
+
+            // Check if the combined name has more than 20 characters
+            if (fullName.length > 20) {
+                alert('Name is too long! Please enter a shorter name.');
+                return; // Stop processing
+            }
+
+            // Check if the zip code is valid (5 digits)
+            if (!/^\d{5}$/.test(zipCode)) {
+                alert('Invalid ZIP Code! Please enter a valid five-digit ZIP Code.');
+                return; // Stop processing
+            }
+
+            // If everything is valid, show a success message
+            alert('Thank you! Your information has been submitted successfully.');
         }
     </script>
 </body>
