@@ -1,0 +1,93 @@
+<!DOCTYPE html> <!-- Doctype declaration -->
+<!-- index.html - Created by William Cline -->
+<html lang="en"> <!-- Open HTML tag with language set to English -->
+<head> <!-- Open head tag -->
+    <meta charset="UTF-8"> <!-- Character set declaration -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design meta tag -->
+    <title>Fun Meme Page</title> <!-- Title of the page -->
+    <!-- Adding some basic styling -->
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Fun font for a meme page */
+            background-color: #f3f3f3; /* Light grey background for a soft look */
+            margin: 0;
+            padding: 20px;
+            position: relative; /* Position relative for absolute positioning of meme image */
+        }
+        #meme {
+            position: absolute; /* Absolute position for the meme image to move around */
+            top: 0;
+            left: 0;
+        }
+        .btn {
+            display: inline-block; /* Display buttons inline */
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #008cba; /* Blue color for buttons */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #005f73; /* Darker blue on hover for a nice effect */
+        }
+        .disabled {
+            background-color: #ccc; /* Greyed out button for disabled state */
+            cursor: not-allowed; /* Cursor to indicate the button is disabled */
+        }
+    </style>
+</head>
+<body> <!-- Open body tag -->
+<header> <!-- Header section -->
+    <h1>Welcome to my page!</h1> <!-- Header text -->
+</header> <!-- Close header section -->
+<!-- Buttons to control the meme movement -->
+<button id="startBtn" class="btn" onclick="startMoving()">Start</button> <!-- Start button -->
+<button id="stopBtn" class="btn disabled" onclick="stopMoving()" disabled>Stop</button> <!-- Stop button -->
+<p></p>
+<p> <!-- Open paragraph tag -->
+    <img id="meme" alt="Funny image.jpg"> <!-- Image tag with meme -->
+</p> <!-- Close paragraph tag -->
+<!-- Adding JavaScript for functionality -->
+<script>
+    let moveInterval; // Variable to store the interval ID
+
+    // Function to start moving the meme image
+    function startMoving() {
+        const meme = document.getElementById('meme'); // Get the meme image element
+        let posX = 0; // Starting X position
+        let posY = 0; // Starting Y position
+        const speed = 5; // Speed of movement
+
+        // Function to update meme position
+        function updatePosition() {
+            posX += speed; // Move right
+            posY += speed; // Move down
+            meme.style.left = posX + 'px'; // Update horizontal position
+            meme.style.top = posY + 'px'; // Update vertical position
+        }
+
+        moveInterval = setInterval(updatePosition, 50); // Start moving the meme every 50ms
+
+        // Disable the start button and enable the stop button
+        document.getElementById('startBtn').classList.add('disabled');
+        document.getElementById('startBtn').disabled = true;
+        document.getElementById('stopBtn').classList.remove('disabled');
+        document.getElementById('stopBtn').disabled = false;
+    }
+
+    // Function to stop moving the meme image
+    function stopMoving() {
+        clearInterval(moveInterval); // Clear the interval to stop moving the meme
+
+        // Enable the start button and disable the stop button
+        document.getElementById('startBtn').classList.remove('disabled');
+        document.getElementById('startBtn').disabled = false;
+        document.getElementById('stopBtn').classList.add('disabled');
+        document.getElementById('stopBtn').disabled = true;
+    }
+</script>
+</body>
+</html>
