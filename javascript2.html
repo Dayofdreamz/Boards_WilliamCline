@@ -1,0 +1,95 @@
+<!--Javascript2 - William Cline-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Palindrome Checker</title>
+    <!-- Adding custom fonts and background sound -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Applying a custom font and a soothing background color */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #e4f9f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /* Adding a background image for visual appeal */
+            background: url('C:\Users\willi\Downloads\_ece8a216-7fe1-46f1-b999-f9c000549c40.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            /* Adding a subtle animation to the container */
+            transition: transform 0.3s ease-in-out;
+        }
+        .container:hover {
+            /* Slightly enlarging the container on hover for interactive feedback */
+            transform: scale(1.05);
+        }
+        /* Styling the buttons with a gradient and transition for a modern look */
+        .btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-image: linear-gradient(to right, #36d1dc, #5b86e5);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-image 0.3s ease-in-out;
+        }
+        .btn:hover {
+            background-image: linear-gradient(to right, #5b86e5, #36d1dc);
+        }
+    </style>
+</head>
+<body>
+<!-- Adding an audio element for background sound -->
+<audio autoplay loop>
+    <source src=C:\Users\willi\Downloads\us-lab-background-1(1).mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<!-- Container for our palindrome checker -->
+<div class="container">
+    <h1>Enhanced Palindrome Checker</h1>
+    <!-- Button to trigger the palindrome check -->
+    <button class="btn" id="checkPalindrome">Check for Palindrome</button>
+</div>
+
+<!-- Adding JavaScript for functionality -->
+<script>
+    // Function to check if a string is a palindrome
+    function isPalindrome(str) {
+        // Remove spaces and convert to lowercase
+        const cleaned = str.replace(/\s+/g, '').toLowerCase();
+        // Check if string is the same forwards and backwards
+        return cleaned === cleaned.split('').reverse().join('');
+    }
+
+    // Function to prompt the user and check the input
+    function check() {
+        let userInput;
+        do {
+            // Prompt the user for a string
+            userInput = prompt('Enter a string to check if it is a palindrome:');
+            if (userInput !== null) {
+                // Notify the user if the string is a palindrome or not
+                alert(isPalindrome(userInput) ? 'It is a palindrome!' : 'It is not a palindrome.');
+            }
+        } while (userInput !== null); // Continue until the user cancels the prompt
+    }
+
+    // Add event listener to our button
+    document.getElementById('checkPalindrome').addEventListener('click', check);
+</script>
+</body>
+</html></html>
